@@ -9,3 +9,12 @@ install_manifest.txt
 compile_commands.json
 CTestTestfile.cmake
 _deps
+
+#Ignore folders added by the IDE
+.idea/
+
+# Ignore CLion/CMake build folders
+cmake-build-*/
+
+# Don't commit automatically downloaded artifacts (the ANTLR4 jar file)
+download/
