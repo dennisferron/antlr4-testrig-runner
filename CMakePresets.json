@@ -1,0 +1,89 @@
+{
+  "version": 3,
+  "configurePresets": [
+    {
+        "name": "common-presets",
+      "hidden": true,
+      "binaryDir": "${sourceDir}/cmake-build-${presetName}",
+      "installDir": "../Common/cmake-install-${presetName}",
+      "cacheVariables": {
+		"CMAKE_TOOLCHAIN_FILE": "C:\\source\\vcpkg\\scripts\\buildsystems\\vcpkg.cmake"
+      }
+    },
+    {
+      "name": "toolchain-mingw",
+      "hidden": true,
+      "vendor": {
+        "jetbrains.com/clion": {
+          "toolchain": "MinGW"
+        }
+      },
+      "generator": "Ninja",
+	  "cacheVariables": {
+		  "VCPKG_TARGET_TRIPLET": "x64-mingw-static",
+		  "VCPKG_HOST_TRIPLET": "x64-mingw-static"		  
+	  }
+    },
+    {
+      "name": "toolchain-emscripten",
+      "hidden": true,
+      "vendor": {
+        "jetbrains.com/clion": {
+          "toolchain": "Emscripten"
+        }
+      },
+      "generator": "Ninja",
+      "cacheVariables": {
+		"VCPKG_TARGET_TRIPLET": "wasm32-emscripten",
+		"VCPKG_HOST_TRIPLET": "x64-mingw-static",		  
+        "VCPKG_CHAINLOAD_TOOLCHAIN_FILE": "C:\\source\\emsdk\\upstream\\emscripten\\cmake\\Modules\\Platform\\Emscripten.cmake"
+      }
+    },
+    {
+      "name": "dbg-mgw",
+      "inherits": ["toolchain-mingw", "common-presets"]
+    },
+    {
+      "name": "rel-mgw",
+      "inherits": ["toolchain-mingw", "common-presets"]
+    },
+    {
+      "name": "dbg-ems",
+      "inherits": ["toolchain-emscripten", "common-presets"]
+    },
+    {
+      "name": "rel-ems",
+      "inherits": ["toolchain-emscripten", "common-presets"]
+    }
+  ],
+    "buildPresets": [
+      {
+        "name": "use-dbg-mgw",
+        "displayName": "Debug - MinGW",
+        "description": "Debug build for MinGW",
+        "configurePreset": "dbg-mgw",
+        "configuration": "Debug"
+      },
+        {
+            "name": "use-rel-mgw",
+            "displayName": "Release - MinGW",
+            "description": "Release build for MinGW",
+            "configurePreset": "rel-mgw",
+            "configuration": "Release"
+        },
+      {
+        "name": "use-dbg-ems",
+        "displayName": "Debug - Emscripten",
+        "description": "Debug build with Emscripten",
+        "configurePreset": "dbg-ems",
+        "configuration": "Debug"
+      },
+      {
+        "name": "use-rel-ems",
+        "displayName": "Release - Emscripten",
+        "description": "Release build with Emscripten",
+        "configurePreset": "rel-ems",
+        "configuration": "Release"
+      }
+    ]
+}
