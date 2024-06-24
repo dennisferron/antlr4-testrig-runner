@@ -1,5 +1,15 @@
 # How to add Install target to CMake project
 
+## Changes:
+
++ Use ".../${CMAKE_INSTALL_INCLUDEDIR}" instead of ".../include"
++ Step 4 configure_package_config_file and "install(FILES" could come before step 3.
++ TODO: remove "/cmake" from end of install destination(s)
++ TODO: remove RUNTIME/LIBRARY/ARCHIVE from step 3
++ TODO: change destination in step 5 to use CMAKE_INSTALL_DATADIR
++ TODO: don't bother with cmake/ folder for config.in file
++ TODO: move include to step 0, include(CMakePackageConfigHelpers) and include(GNUInstallDirs)
+
 # Steps in Brief
 
 1. Change `target_include_directories` to use generator expressions.
@@ -16,7 +26,7 @@
 
 ```
 target_include_directories(foo PUBLIC
-		$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+		$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/${CMAKE_INSTALL_INCLUDEDIR}>
 		$<INSTALL_INTERFACE:include>
 )
 ```
