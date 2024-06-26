@@ -21,11 +21,9 @@ In ports/<portname>/portfile.cmake:
 
 ```
 wget https://github.com/<USER>/<PROJECT>/archive/<REF>.tar.gz
-vcpkg hash <PROJECT>-<REF>.tar.gz
-rm <PROJECT>-<REF>.tar.gz
+vcpkg hash <REF>.tar.gz
+rm <REF>.tar.gz
 ```
-
-TODO: in the command above, is the file named <PROJECT>-<REF>.tar.gz or just <REF>.tar.gz?
 
 + In versions/baseline.json, find entry for <port-name> and update "baseline" to newest project version (if project version changed) and "port-version" (if port was changed without project version changing).  I believe you can reset port-version back to 0 if you're updating to a new project version in "baseline".  Note that port-version is a single integer; it should NOT be in quotes.
 + In ports/<port-name>/vcpkg.json, update "version" and "port-version", if applicable.
