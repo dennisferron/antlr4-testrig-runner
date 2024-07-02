@@ -10,14 +10,6 @@ include(GNUInstallDirs)
 # when we are using CMAKE_TOOLCHAIN_FILE for vcpkg.
 message(STATUS "Toolchain file: ${CMAKE_TOOLCHAIN_FILE}")
 
-#set(DEBUG_SHARE "C:/source/vcpkg/packages/antlr4-testrig-runner_x64-mingw-static/debug/share/antlr4-testrig-runner")
-set(DEBUG_SHARE "C:/source/vcpkg/packages/antlr4-testrig-runner_x64-mingw-static/debug/share")
-if(NOT EXISTS "${DEBUG_SHARE}")
-    message(WARNING "'${DEBUG_SHARE}' does not exist.")
-else()
-    message(WARNING "'${DEBUG_SHARE}' DOES exist.")
-endif()
-
 add_executable(antlr4-testrig-runner test_rig_main.cpp)
 
 function(DLF_example_function foo bar)
