@@ -9,3 +9,7 @@ find_dependency(antlr4)
 include("${CMAKE_CURRENT_LIST_DIR}/antlr4-testrig-runner-targets.cmake")
 
 check_required_components(antlr4-testrig-runner)
+
+function(DLF_example_function2 foo bar)
+    message("DLF_example_function2: ${foo}, ${bar}")
+endfunction()

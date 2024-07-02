@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.27)
 project(antlr4-testrig-runner)
 
-set(antlr4_testrig_runner_VERSION 1.0.3)
+set(antlr4_testrig_runner_VERSION 1.0.4)
 
 include(CMakePackageConfigHelpers)
 include(GNUInstallDirs)
@@ -70,7 +70,7 @@ message(STATUS "Install step 4")
 message(STATUS "Configure package file")
 
 configure_package_config_file(
-        antlr4-testrig-runner-config.cmake.in
+        cmake/antlr4-testrig-runner-config.cmake.in
     "${CMAKE_CURRENT_BINARY_DIR}/antlr4-testrig-runner-config.cmake"
     INSTALL_DESTINATION
         "${CMAKE_INSTALL_DATADIR}/antlr4-testrig-runner"
