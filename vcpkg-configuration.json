@@ -1,0 +1,15 @@
+{
+  "default-registry": {
+    "kind": "git",
+    "baseline": "62a471f00693d138ad597ffa6bb2802d1c18e469",
+    "repository": "https://github.com/microsoft/vcpkg"
+  },
+  "registries": [
+    {
+      "kind": "git",
+      "repository": "https://github.com/dennisferron/vcpkg-registry",
+      "baseline": "75b80219115ed4b025464b6790554976200c0c3f",
+      "packages": [ "antlr4-testrig-runner", "beicode", "beison", "webgpu*" ]
+    }
+  ]
+}

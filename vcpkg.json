@@ -1,0 +1,4 @@
+{
+  "dependencies" : [ "antlr4",
+    "tiny-process-library", "inipp" ]
+}

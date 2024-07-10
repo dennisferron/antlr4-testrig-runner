@@ -4,7 +4,9 @@
 # of making a project installable.
 
 include(CMakeFindDependencyMacro)
-#find_dependency()
+find_dependency(tiny-process-library)
+find_dependency(inipp)
+find_dependency(Java COMPONENTS Runtime Development REQUIRED)
 
 include("${CMAKE_CURRENT_LIST_DIR}/antlr4-testrig-runner-targets.cmake")
 

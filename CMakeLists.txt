@@ -10,11 +10,16 @@ include(GNUInstallDirs)
 # when we are using CMAKE_TOOLCHAIN_FILE for vcpkg.
 message(STATUS "Toolchain file: ${CMAKE_TOOLCHAIN_FILE}")
 
-add_executable(antlr4-testrig-runner test_rig_main.cpp)
+add_library(antlr4-testrig-runner test_rig_runner.cpp)
 
-function(DLF_example_function foo bar)
-    message("DLF_example_function: ${foo}, ${bar}")
-endfunction()
+find_package(tiny-process-library CONFIG REQUIRED)
+target_link_libraries(antlr4-testrig-runner PRIVATE tiny-process-library::tiny-process-library)
+
+find_path(INIPP_INCLUDE_DIRS "inipp.h")
+target_include_directories(antlr4-testrig-runner PRIVATE ${INIPP_INCLUDE_DIRS})
+
+find_package(Java COMPONENTS Runtime Development REQUIRED)
+
 
 message(STATUS "Install step 1")
 
